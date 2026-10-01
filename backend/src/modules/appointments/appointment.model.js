@@ -1,0 +1,6 @@
+import mongoose from 'mongoose';
+const schema=new mongoose.Schema({tenantId:{type:mongoose.Schema.Types.ObjectId,ref:'Tenant',required:true,index:true},organizationId:{type:mongoose.Schema.Types.ObjectId,ref:'Organization',required:true},providerId:{type:mongoose.Schema.Types.ObjectId,ref:'Provider',required:true,index:true},clientId:{type:mongoose.Schema.Types.ObjectId,ref:'Client',required:true,index:true},type:{type:String,default:'COUNSELING'},startAt:{type:Date,required:true,index:true},endAt:{type:Date,required:true},status:{type:String,enum:['SCHEDULED','CONFIRMED','COMPLETED','CANCELLED','NO_SHOW'],default:'SCHEDULED'},notes:String,timezone:{type:String,default:'Africa/Kampala'}},{timestamps:true});
+schema.index({tenantId:1,providerId:1,startAt:1},{unique:true});
+schema.index({tenantId:1,clientId:1,startAt:1});
+schema.add({createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'}});
+export default mongoose.model('Appointment',schema);

@@ -1,0 +1,2 @@
+import Client from './client.model.js'; import { AppError } from '../../shared/errors/AppError.js';
+export async function assertClientAccess({tenantId,clientId,user}){const client=await Client.findOne({_id:clientId,tenantId}).lean();if(!client)throw new AppError('Client not found.',{statusCode:404,code:'NOT_FOUND'});if(user.role==='CLIENT'&&String(client.userId)!==String(user.sub))throw new AppError('Client access denied.',{statusCode:403,code:'AUTHORIZATION_ERROR'});return client;}

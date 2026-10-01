@@ -1,0 +1,5 @@
+import mongoose from 'mongoose';
+const schema=new mongoose.Schema({tenantId:{type:mongoose.Schema.Types.ObjectId,ref:'Tenant',required:true,index:true},recipientUserId:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true,index:true},channel:{type:String,enum:['IN_APP','EMAIL','SMS','PUSH'],required:true},templateKey:String,payload:{type:mongoose.Schema.Types.Mixed,default:{}},status:{type:String,enum:['PENDING','SENT','FAILED','CANCELLED'],default:'PENDING'},attempts:{type:Number,default:0},sentAt:Date,lastError:String,idempotencyKey:{type:String,required:true}},{timestamps:true});
+schema.index({tenantId:1,idempotencyKey:1},{unique:true});
+schema.add({createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'}});
+export default mongoose.model('Notification',schema);

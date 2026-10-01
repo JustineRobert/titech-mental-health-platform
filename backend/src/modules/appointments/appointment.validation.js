@@ -1,0 +1,2 @@
+import { z } from 'zod';
+export const appointmentSchema=z.object({organizationId:z.string(),providerId:z.string(),clientId:z.string(),type:z.string().default('COUNSELING'),startAt:z.coerce.date(),endAt:z.coerce.date(),status:z.enum(['SCHEDULED','CONFIRMED','COMPLETED','CANCELLED','NO_SHOW']).default('SCHEDULED'),notes:z.string().max(2000).optional(),timezone:z.string().default('Africa/Kampala')}).refine(v=>v.endAt>v.startAt,{message:'endAt must be after startAt'});

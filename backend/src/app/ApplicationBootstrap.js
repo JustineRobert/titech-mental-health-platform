@@ -1,0 +1,2 @@
+import { createContainer } from './container.js'; import { connectDatabase } from '../config/database.js'; import { connectRedis } from '../config/redis.js'; import { createApp } from './createApp.js';
+export async function bootstrap(){const container=createContainer();const mongo=await connectDatabase(container.env.MONGODB_URI);container.mongo=mongo;await connectRedis(container.redis);const app=createApp(container);return {app,container};}

@@ -1,0 +1,4 @@
+import mongoose from 'mongoose';
+const schema=new mongoose.Schema({tenantId:{type:mongoose.Schema.Types.ObjectId,ref:'Tenant',required:true,index:true},clientId:{type:mongoose.Schema.Types.ObjectId,ref:'Client',required:true,index:true},createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true},providerName:{type:String,required:true},reason:{type:String,required:true},consentId:{type:mongoose.Schema.Types.ObjectId,ref:'Consent',required:true},status:{type:String,enum:['PENDING','ACCEPTED','IN_PROGRESS','COMPLETED','CANCELLED'],default:'PENDING'},followUps:[{at:Date,note:String}]},{timestamps:true});
+schema.add({createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'}});
+export default mongoose.model('Referral',schema);

@@ -1,0 +1,2 @@
+import express from 'express'; import Notification from './notification.model.js'; import { authorize } from '../../middleware/authorize.js';
+export function createNotificationRoutes(){const r=express.Router();r.get('/',authorize('appointment:read'),async(req,res)=>res.json({success:true,data:await Notification.find({tenantId:req.tenantId,recipientUserId:req.user.sub}).sort({createdAt:-1}).limit(100).lean()}));return r;}

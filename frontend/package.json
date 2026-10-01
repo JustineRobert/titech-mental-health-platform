@@ -1,0 +1,6 @@
+{
+  "name":"@titech/mental-health-frontend","version":"1.0.0","private":true,"type":"module",
+  "scripts":{"dev":"vite --host 0.0.0.0 --port 3000","build":"vite build","lint":"eslint src --ext .js,.jsx"},
+  "dependencies":{"@vitejs/plugin-react":"^5.0.0","axios":"^1.12.0","react":"^19.1.0","react-dom":"^19.1.0","react-router-dom":"^7.9.0"},
+  "devDependencies":{"vite":"^7.0.0","eslint":"^9.0.0","@eslint/js":"^9.0.0","eslint-plugin-react-hooks":"^5.2.0","eslint-plugin-react-refresh":"^0.4.20"}
+}

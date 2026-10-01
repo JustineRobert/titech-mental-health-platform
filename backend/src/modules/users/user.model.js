@@ -1,0 +1,4 @@
+import mongoose from 'mongoose';
+const userSchema = new mongoose.Schema({ email:{type:String,required:true,unique:true,lowercase:true,trim:true}, passwordHash:{type:String,required:true}, firstName:{type:String,required:true,trim:true}, lastName:{type:String,required:true,trim:true}, phone:String, status:{type:String,enum:['ACTIVE','LOCKED','DISABLED'],default:'ACTIVE'}, emailVerified:{type:Boolean,default:false}, lastLoginAt:Date,failedLoginAttempts:{type:Number,default:0},lockedUntil:Date }, {timestamps:true});
+userSchema.index({email:1},{unique:true});
+export default mongoose.model('User',userSchema);

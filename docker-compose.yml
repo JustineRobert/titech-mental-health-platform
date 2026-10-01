@@ -1,0 +1,48 @@
+services:
+  mongodb:
+    image: mongo:8
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: titech_mental_health
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  redis:
+    image: redis:8-alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  backend:
+    build: ./backend
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      MONGODB_URI: mongodb://mongodb:27017/titech_mental_health
+      REDIS_URL: redis://redis:6379
+      JWT_ACCESS_SECRET: change-me
+      JWT_REFRESH_SECRET: change-me-too
+      CORS_ORIGIN: http://localhost:3000
+      COOKIE_SECURE: "false"
+    depends_on:
+      - mongodb
+      - redis
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build: ./frontend
+    environment:
+      VITE_API_BASE_URL: http://localhost:5000/api/v1
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+
+volumes:
+  mongodb_data:
+  redis_data:

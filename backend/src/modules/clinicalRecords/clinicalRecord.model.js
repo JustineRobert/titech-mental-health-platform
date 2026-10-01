@@ -1,0 +1,4 @@
+import mongoose from 'mongoose';
+const schema=new mongoose.Schema({tenantId:{type:mongoose.Schema.Types.ObjectId,ref:'Tenant',required:true,index:true},clientId:{type:mongoose.Schema.Types.ObjectId,ref:'Client',required:true,index:true},providerId:{type:mongoose.Schema.Types.ObjectId,ref:'Provider',required:true,index:true},appointmentId:{type:mongoose.Schema.Types.ObjectId,ref:'Appointment'},type:{type:String,enum:['SESSION_NOTE','PROGRESS_NOTE','OBSERVATION','FOLLOW_UP'],required:true},content:{type:String,required:true},attachments:[mongoose.Schema.Types.ObjectId],sensitivity:{type:String,enum:['HIGHLY_SENSITIVE'],default:'HIGHLY_SENSITIVE'}},{timestamps:true});
+schema.add({createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'}});
+export default mongoose.model('ClinicalRecord',schema);

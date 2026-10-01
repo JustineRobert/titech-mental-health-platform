@@ -1,0 +1,6 @@
+import mongoose from 'mongoose';
+const questionSchema=new mongoose.Schema({key:{type:String,required:true},prompt:{type:String,required:true},type:{type:String,enum:['TEXT','NUMBER','SINGLE_CHOICE','MULTI_CHOICE','BOOLEAN'],required:true},options:[{value:String,label:String}],required:{type:Boolean,default:false}},{_id:false});
+const schema=new mongoose.Schema({tenantId:{type:mongoose.Schema.Types.ObjectId,ref:'Tenant',required:true,index:true},name:{type:String,required:true},description:String,version:{type:String,required:true},status:{type:String,enum:['DRAFT','PUBLISHED','RETIRED'],default:'DRAFT'},questions:[questionSchema],scoringRules:{type:mongoose.Schema.Types.Mixed,default:{}},clinicalNote:String,reviewedBy:String,reviewedAt:Date},{timestamps:true});
+schema.index({tenantId:1,name:1,version:1},{unique:true});
+schema.add({createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'}});
+export default mongoose.model('AssessmentTemplate',schema);

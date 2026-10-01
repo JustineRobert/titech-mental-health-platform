@@ -1,0 +1,29 @@
+phase,name,status,testStatus,securityStatus,exitDecision
+0,"Repository Discovery & Technical Baseline",IMPLEMENTED,PARTIAL,PARTIAL,OPEN
+1,"Architecture & Engineering Foundation",IMPLEMENTED,PARTIAL,PARTIAL,OPEN
+2,"Security, Identity & Multi-Tenancy",IMPLEMENTED,PARTIAL,PARTIAL,OPEN
+3,"Organization, Provider & Client Management",IMPLEMENTED,PARTIAL,PARTIAL,OPEN
+4,"Privacy, Consent & Data Governance",IMPLEMENTED,PARTIAL,PARTIAL,OPEN
+5,"Mental Health Assessment Engine",IMPLEMENTED,PARTIAL,PARTIAL,OPEN
+6,"Appointment & Scheduling Platform",IMPLEMENTED,PARTIAL,PARTIAL,OPEN
+7,"Care Plans & Clinical/Counseling Records",IMPLEMENTED,PARTIAL,PARTIAL,OPEN
+8,"Referral & Safety Management",IMPLEMENTED,PARTIAL,PARTIAL,OPEN
+9,"Communications & Notifications",DESIGNED,PARTIAL,PARTIAL,OPEN
+10,"Resource & Knowledge Platform",IMPLEMENTED,PARTIAL,PARTIAL,OPEN
+11,"Reporting & Analytics",IMPLEMENTED,PARTIAL,PARTIAL,OPEN
+12,"Administration & Enterprise Controls",IMPLEMENTED,PARTIAL,PARTIAL,OPEN
+13,"File & Document Management",DESIGNED,PARTIAL,PARTIAL,OPEN
+14,"External Integrations",DESIGNED,PARTIAL,PARTIAL,OPEN
+15,"AI-Assisted Capabilities",DESIGNED,PARTIAL,PARTIAL,OPEN
+16,"Accessibility, Localization & Low-Connectivity Readiness",DESIGNED,PARTIAL,PARTIAL,OPEN
+17,"Performance & Scalability",DESIGNED,PARTIAL,PARTIAL,OPEN
+18,"Security Hardening",DESIGNED,PARTIAL,PARTIAL,OPEN
+19,"Observability, Reliability & Operations",DESIGNED,PARTIAL,PARTIAL,OPEN
+20,"Backup, Disaster Recovery & Business Continuity",DESIGNED,PARTIAL,PARTIAL,OPEN
+21,"CI/CD & Infrastructure Automation",DESIGNED,PARTIAL,PARTIAL,OPEN
+22,"End-to-End System Validation",DESIGNED,PARTIAL,PARTIAL,OPEN
+23,"Clinical, Privacy, Legal & Governance Review",DESIGNED,PARTIAL,PARTIAL,OPEN
+24,"Controlled Pilot",DESIGNED,PARTIAL,PARTIAL,OPEN
+25,"Production Launch",DESIGNED,PARTIAL,PARTIAL,OPEN
+26,"Post-Production Stabilization",DESIGNED,PARTIAL,PARTIAL,OPEN
+27,"Continuous Improvement",DESIGNED,PARTIAL,PARTIAL,OPEN

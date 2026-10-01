@@ -1,0 +1,4 @@
+import mongoose from 'mongoose';
+const schema=new mongoose.Schema({tenantId:{type:mongoose.Schema.Types.ObjectId,ref:'Tenant',required:true,index:true},clientId:{type:mongoose.Schema.Types.ObjectId,ref:'Client',required:true,index:true},templateId:{type:mongoose.Schema.Types.ObjectId,ref:'AssessmentTemplate',required:true},templateVersion:String,responses:{type:mongoose.Schema.Types.Mixed,default:{}},score:Number,interpretationMetadata:{type:mongoose.Schema.Types.Mixed,default:{}},status:{type:String,enum:['IN_PROGRESS','COMPLETED','REVIEWED'],default:'IN_PROGRESS'},completedAt:Date,reviewedBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},reviewedAt:Date},{timestamps:true});
+schema.add({createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'}});
+export default mongoose.model('AssessmentSession',schema);

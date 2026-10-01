@@ -1,0 +1,6 @@
+import mongoose from 'mongoose';
+const goalSchema=new mongoose.Schema({title:String,description:String,status:{type:String,enum:['OPEN','IN_PROGRESS','ACHIEVED','CLOSED'],default:'OPEN'},targetDate:Date},{timestamps:true});
+const interventionSchema=new mongoose.Schema({name:String,description:String,status:{type:String,enum:['PLANNED','ACTIVE','COMPLETED','DISCONTINUED'],default:'PLANNED'}},{timestamps:true});
+const schema=new mongoose.Schema({tenantId:{type:mongoose.Schema.Types.ObjectId,ref:'Tenant',required:true,index:true},clientId:{type:mongoose.Schema.Types.ObjectId,ref:'Client',required:true,index:true},ownerProviderId:{type:mongoose.Schema.Types.ObjectId,ref:'Provider',required:true},status:{type:String,enum:['DRAFT','ACTIVE','UNDER_REVIEW','MODIFIED','COMPLETED','CLOSED'],default:'DRAFT'},goals:[goalSchema],interventions:[interventionSchema],reviewSchedule:String,outcomes:[String]},{timestamps:true});
+schema.add({createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'}});
+export default mongoose.model('CarePlan',schema);

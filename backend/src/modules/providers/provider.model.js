@@ -1,0 +1,4 @@
+import mongoose from 'mongoose';
+const schema=new mongoose.Schema({tenantId:{type:mongoose.Schema.Types.ObjectId,ref:'Tenant',required:true,index:true},organizationId:{type:mongoose.Schema.Types.ObjectId,ref:'Organization',required:true,index:true},userId:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true,index:true},licenseReference:String,specialties:[String],bio:String,languages:[String],status:{type:String,enum:['ACTIVE','INACTIVE','PENDING'],default:'PENDING'}},{timestamps:true});
+schema.add({createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'}});
+export default mongoose.model('Provider',schema);

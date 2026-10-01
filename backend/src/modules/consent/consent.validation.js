@@ -1,0 +1,2 @@
+import { z } from 'zod';
+export const consentSchema=z.object({clientId:z.string(),purpose:z.enum(['CARE','DATA_PROCESSING','COMMUNICATION','REFERRAL','RESEARCH','DATA_SHARING']),scope:z.array(z.string()).min(1),version:z.string().min(1),status:z.enum(['GRANTED','WITHDRAWN','EXPIRED']),grantedAt:z.coerce.date().optional(),withdrawnAt:z.coerce.date().optional(),expiresAt:z.coerce.date().optional(),method:z.enum(['WEB','PAPER','VERBAL','IMPORT']),evidence:z.string().max(1000).optional()});

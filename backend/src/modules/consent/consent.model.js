@@ -1,0 +1,4 @@
+import mongoose from 'mongoose';
+const schema=new mongoose.Schema({tenantId:{type:mongoose.Schema.Types.ObjectId,ref:'Tenant',required:true,index:true},clientId:{type:mongoose.Schema.Types.ObjectId,ref:'Client',required:true,index:true},purpose:{type:String,enum:['CARE','DATA_PROCESSING','COMMUNICATION','REFERRAL','RESEARCH','DATA_SHARING'],required:true},scope:{type:[String],default:[]},version:{type:String,required:true},status:{type:String,enum:['GRANTED','WITHDRAWN','EXPIRED'],required:true},grantedAt:Date,withdrawnAt:Date,expiresAt:Date,method:{type:String,enum:['WEB','PAPER','VERBAL','IMPORT'],required:true},evidence:String},{timestamps:true});
+schema.add({createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'}});
+export default mongoose.model('Consent',schema);

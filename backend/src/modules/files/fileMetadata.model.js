@@ -1,0 +1,4 @@
+import mongoose from 'mongoose';
+const schema=new mongoose.Schema({tenantId:{type:mongoose.Schema.Types.ObjectId,ref:'Tenant',required:true,index:true},clientId:{type:mongoose.Schema.Types.ObjectId,ref:'Client'},uploadedBy:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true},objectKey:{type:String,required:true,unique:true},fileName:String,mimeType:String,size:Number,retentionUntil:Date,status:{type:String,enum:['ACTIVE','DELETED','QUARANTINED'],default:'ACTIVE'}},{timestamps:true});
+schema.add({createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'}});
+export default mongoose.model('FileMetadata',schema);

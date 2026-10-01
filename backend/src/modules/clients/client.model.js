@@ -1,0 +1,5 @@
+import mongoose from 'mongoose';
+const schema=new mongoose.Schema({tenantId:{type:mongoose.Schema.Types.ObjectId,ref:'Tenant',required:true,index:true},organizationId:{type:mongoose.Schema.Types.ObjectId,ref:'Organization',required:true,index:true},userId:{type:mongoose.Schema.Types.ObjectId,ref:'User',index:true},clientCode:{type:String,required:true},dateOfBirth:Date,preferredLanguage:{type:String,default:'en'},communicationPreferences:{email:{type:Boolean,default:true},sms:{type:Boolean,default:false},push:{type:Boolean,default:false}},emergencyContacts:[{name:String,relationship:String,phone:String}],careTeam:[{providerId:{type:mongoose.Schema.Types.ObjectId,ref:'Provider'},relationship:String}],status:{type:String,enum:['ACTIVE','INACTIVE','CLOSED'],default:'ACTIVE'}},{timestamps:true});
+schema.index({tenantId:1,clientCode:1},{unique:true});
+schema.add({createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'}});
+export default mongoose.model('Client',schema);
